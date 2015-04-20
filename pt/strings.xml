@@ -1,6 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?> 
 <resources> 
-	<string name="nome">Robo Bombeiro</string> 
-	<string name="inscricoes">Inscrições</string> 
-	<string name="equipas">Equipas</string> 
+    <lang category="pt">
+	<nome>Robo Bombeiro</nome>
+	<inscricoes>Inscrições</inscricoes> 
+	<registar>Registar</registar> 
+        <noticias>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin luctus est. 
+                Suspendisse mollis bibendum tortor, cursus egestas orci dapibus et. 
+                Cras commodo dictum erat, eu imperdiet ipsum. Nullam gravida metus mi, ut lacinia sem maximus at. In sed lobortis arcu. 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu tincidunt leo. 
+                Praesent iaculis velit in eros commodo, at dictum dolor imperdiet.
+                Curabitur fringilla ultrices dui, quis tristique magna suscipit vel.
+                Aliquam bibendum dui nibh, non posuere purus luctus at. 
+                Morbi lobortis, purus vitae semper pretium, magna dolor vehicula velit, quis dictum magna urna a risus. 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Ut convallis metus enim, sit amet ultrices risus accumsan eget. Aenean hendrerit ac sem at auctor. 
+                Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. </noticias>
+        <eventos>Duis finibus imperdiet fermentum. Maecenas ex justo, placerat pulvinar metus sit amet, volutpat feugiat elit. Nullam imperdiet blandit ex a mollis. Pellentesque a leo purus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque mattis euismod augue, sollicitudin varius mauris viverra ut. Pellentesque gravida diam sapien, id placerat massa rhoncus eu. Cras fringilla eu enim non semper. Sed dignissim mattis velit in malesuada. Nunc suscipit vehicula feugiat. 
+	</eventos>
+         <confPass>Confirmação da password</confPass>
+         <pergSeg>Pergunta de segurança</pergSeg>
+         <respSeg>Resposta de segurança</respSeg>
+         <carro>Qual foi o seu primeiro carro?</carro>
+         <mae>Qual o apelido da sua mãe?</mae>
+         <animal>Qual o nome do seu primeiro animal de estimação?</animal>
+         <escola>Qual foi a sua escola primária?</escola>
+        <registo>Nome</registo> 
+</lang>
 </resources>

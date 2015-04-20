@@ -6,8 +6,18 @@ and open the template in the editor.
 -->
 <html>
     <head>
+        <script src="getlangtext.js"></script>
         <meta charset="UTF-8">
         <title>Registo Robo</title>
+        <style>
+            th{
+                padding-bottom: 10px;
+            }
+            td{
+                padding-bottom: 10px;
+            }
+            
+        </style>
         <script>
             function VerificarPass(){
                 var a1= document.getElementById('pd1').value;
@@ -20,10 +30,12 @@ and open the template in the editor.
                 }
                 
             }
+            
         </script>
     </head>
     <body>
         <?php include("./masterPage.php") ?>
+       
         <form action="form_registo.php" type ="submit" method="POST" nome="registo">
             <table>
                 <tr>
@@ -31,34 +43,45 @@ and open the template in the editor.
                     <td><input type="email" name="username"/></td>
                 </tr>
                 <tr>
+                    <th><script>getLangText("registo");</script></th>
+                    <td><input id="nomeR" type="text" name="nomeR" />
+                        
+                    </td>
+                </tr>
+                <tr>
                     <th>Password</th>
                     <td><input id="pd1" type="password"  name="password"/></td>
                 </tr>
                 <tr>
-                    <th>Confirmação da password</th>
+                    <th><script>getLangText("confPass");</script></th>
                     <td><input id="pd2" type="password"  name="passwordC" onchange="VerificarPass()"/>
                         
                     </td>
                 </tr>
                 <tr>
-                    <th>Pergunta de segurança</th>
+                    <th><script>getLangText("pergSeg");</script></th>
                     <td><select id="perguntaS" name="perguntaS">  
 
-                            <option value="carro">Qual foi o seu primeiro carro?</option>
-                            <option value="mae">Qual o apelido da sua mãe?</option>
-                            <option value="animal">Qual o nome do seu primeiro animal de estimação?</option>
-                            <option value="escola">Qual foi a sua escola primária?</option>     
+                            <option value="carro"><script>getLangText("carro");</script></option>
+                            <option value="mae"><script>getLangText("mae");</script></option>
+                            <option value="animal"><script>getLangText("animal");</script></option>
+                            <option value="escola"><script>getLangText("escola");</script></option>     
                         </select></td>
                 </tr>
                  <tr>
-                    <th>Resposta de segurança</th>
+                    <th><script>getLangText("respSeg")</script></th>
                     <td><input id="respotaS" type="text" name="respostaS" />
                         
                     </td>
                 </tr>
+                <tr>
+                    <th></th>
+                    <td><input type='submit' value="Registar" id="btRegistar" /></td>
+                </tr>
             </table>
-            <input type='submit' value="Registar" id="btRegistar" />
+            
         </form>
+       
     </body>
 </html>
 

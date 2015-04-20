@@ -1,7 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?> 
 <resources> 
-	<string name="nome">Fireman Robot</string> 
-	<string name="inscricoes">Inscriptions</string> 
-	<string name="equipas">Teams</string> 
+<lang>
+	<nome>Fireman Robot</nome> 
+	<inscricoes>Inscriptions</inscricoes> 
+	<registar>Register</registar> 
+	<noticias>English text</noticias>
+	<eventos>English events</eventos>
+        <confPass>Password Confirmation</confPass>
+        <pergSeg>Security question</pergSeg>
+         <respSeg>Security answer</respSeg>
+         <carro>What was your first car?</carro>
+         <mae>What´s your mother last name?</mae>
+         <animal>What´s the name of your first pet?</animal>
+         <escola>What was your first school?</escola>
+         <registo>Name</registo> 
+</lang>
 
 </resources>
