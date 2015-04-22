@@ -1,7 +1,7 @@
 <html>
     <head>
-        <title>Robo Bombeiro 2015 </title>
         
+        <script src="getlangtext.js"></script>
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open Sans">
         <style>
             #section{

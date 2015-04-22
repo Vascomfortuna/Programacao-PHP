@@ -2,6 +2,7 @@
 <resources> 
 <lang>
 	<nome>Fireman Robot</nome> 
+        <nomeR>Name</nomeR>
 	<inscricoes>Inscriptions</inscricoes> 
 	<registar>Register</registar> 
 	<noticias>English text</noticias>
@@ -13,7 +14,10 @@
          <mae>What´s your mother last name?</mae>
          <animal>What´s the name of your first pet?</animal>
          <escola>What was your first school?</escola>
-         <registo>Name</registo> 
+         <nomeEquipa>Team name</nomeEquipa>
+         <instituto>Institute</instituto>
+         <conta>Account</conta>
+         <membros>Additional members:</membros>
 </lang>
 
 </resources>

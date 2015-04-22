@@ -11,9 +11,12 @@ and open the template in the editor.
         <title>Registo Robo</title>
         <style>
             th{
+                text-align: right;
                 padding-bottom: 10px;
+                
             }
             td{
+
                 padding-bottom: 10px;
             }
             
@@ -37,15 +40,14 @@ and open the template in the editor.
         <?php include("./masterPage.php") ?>
        
         <form action="form_registo.php" type ="submit" method="POST" nome="registo">
-            <table>
+            <table align="center" >
                 <tr>
                     <th>Username/Email</th>
                     <td><input type="email" name="username"/></td>
                 </tr>
                 <tr>
-                    <th><script>getLangText("registo");</script></th>
+                    <th><script>getLangText("nomeR");</script></th>
                     <td><input id="nomeR" type="text" name="nomeR" />
-                        
                     </td>
                 </tr>
                 <tr>

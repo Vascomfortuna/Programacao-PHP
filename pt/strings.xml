@@ -4,6 +4,7 @@
 	<nome>Robo Bombeiro</nome>
 	<inscricoes>Inscrições</inscricoes> 
 	<registar>Registar</registar> 
+         <nomeR>Nome</nomeR> 
         <noticias>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin luctus est. 
                 Suspendisse mollis bibendum tortor, cursus egestas orci dapibus et. 
                 Cras commodo dictum erat, eu imperdiet ipsum. Nullam gravida metus mi, ut lacinia sem maximus at. In sed lobortis arcu. 
@@ -24,6 +25,9 @@
          <mae>Qual o apelido da sua mãe?</mae>
          <animal>Qual o nome do seu primeiro animal de estimação?</animal>
          <escola>Qual foi a sua escola primária?</escola>
-        <registo>Nome</registo> 
+         <nomeEquipa>Nome da Equipa</nomeEquipa>
+         <instituto>Instituto</instituto>
+         <conta>Conta</conta>
+         <membros>Membros adicionais:</membros>
 </lang>
 </resources>

@@ -13,20 +13,20 @@ xhttp.send();
 return xhttp.responseXML;
 } 
 function getLangText(tagNam) {
-
+        y="./pt/strings.xml";
         var x = document.cookie.split(";");
-        y="";
+            
         for (i = 0; i < x.length; i++) {
-            if (x[i].contains("lan=")) {
-                var y = x[i].substring(x[i].indexOf("=") + 1);
-                alert(x[i]+"   "+y);
+            alert(x[i].indexOf("lan="));
+            if (x[i].indexOf("lan=")>=0) {
+                y = x[i].substring(x[i].indexOf("=") + 1);
                 break;   
             }
-            else if ((i === x.length - 1)) {
-                y = "./pt/strings.xml";
-            }
+           
         }
+    
         xmlDoc = loadXMLDoc(y);
+        
         document.write(xmlDoc.getElementsByTagName(tagNam)[0].childNodes[0].nodeValue);
     }</script>
 

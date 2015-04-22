@@ -8,8 +8,14 @@ if (!$ligacao) {
     die("nao foi possivel ligar:" . mysql_error());
 }
 
-$login_user = "Select Id_Login,Nome from login where Username='$username' and Password='$password'";
-echo $login_user;
+$login_user = "Select login.Id_Login,login.Nome,login.Estado,inscricoes.Nome_Equipa,inscricoes.Instituto,inscricoes.Observacoes, inscricoes.Pago 
+                from login
+                inner join login_inscricoes
+                on login.id_login=login_inscricoes.id_login 
+                inner join inscricoes
+                on inscricoes.id_inscricao = login_inscricoes.id_inscricao
+                where login.Username='$username'and login.Password='$password'";
+
 mysql_select_db("robo_bombeiro");
 try {
     $result = mysql_query($login_user, $ligacao);
@@ -22,25 +28,24 @@ try {
         //echo "<br/>" . $row['Id_Login'] . ", " . $row['Nome'];
         setcookie("id_login", $row['Id_Login']);
         setcookie("nome", $row['Nome']);
-       
-        
+        setcookie("estado", $row['Estado']);
+        setcookie("nome_equipa", $row['Nome_Equipa']);
+        setcookie("instituto", $row['Instituto']);
+        setcookie("pago", $row['Pago']);
+        setcookie("obs", $row['Observacoes']);
     }
-     if (null ===(filter_input(INPUT_COOKIE,"id_login"))) {
-            echo "<br/>Cookie named '" . "id_login". "' is not set!";
-        } else {
-            echo "<br/>Cookie '" ."id_login". "' is set!";
-            echo "<br/>Value is: " . filter_input(INPUT_COOKIE, "id_login");
-        }
-        if (null ===(filter_input(INPUT_COOKIE,"nome"))) {
-            echo "<br/>Cookie named '" . "nome". "' is not set!";
-        } else {
-            echo "<br/>Cookie '" ."nome". "' is set!";
-            echo "<br/>Value is: " . filter_input(INPUT_COOKIE, "nome");
-        }
-        header("Refresh:5; url=./index.php"); // Redirect browser 
-       
-        exit();
-    //setcookie("Username",$result["Username"]);
+
+    if (null === (filter_input(INPUT_COOKIE, "id_login")) && (null === (filter_input(INPUT_COOKIE, "nome")))) {
+        echo "<br/>Login efectuado com sucesso.";
+    } else {
+        echo filter_input(INPUT_COOKIE, "id_login");
+        echo filter_input(INPUT_COOKIE, "nome") . "<br/>";
+        echo "Cookie not set.";
+    }
+
+    header("Refresh:2; url=./index.php"); // Redirect browser 
+
+    exit();
 } catch (PDOException $e) {
     die($e);
 }

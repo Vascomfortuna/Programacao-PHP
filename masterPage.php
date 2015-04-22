@@ -1,5 +1,6 @@
 <html>
     <head>
+        <title>Robo Bombeiro 2015 </title>
        <?php include("./funcoes.php") ?> 
         <style>
             body{
@@ -13,9 +14,7 @@
                 color:#7361FA; 
                 background:#1F1A44; 
             }
-            td{
-                width: 33%;
-            }
+           
             #titulo{
                 height:100%;
                 width:100%;
@@ -32,9 +31,15 @@
         <table width="100%">
            
             <tr >
-                <td><a href="index.php" ><div id="titulo">Home</div></a></td>
-                <td><a href="registo.php"><div id="titulo"><script>getLangText("registar");</script></div></a></td>
-                <td><a href=""><div id="titulo"><script>getLangText("inscricoes");</script></div></a></td>
+                <td style="width: 33%"><a href="index.php" ><div id="titulo">Home</div></a></td>
+                <?php if((null === (filter_input(INPUT_COOKIE, "id_login")) || (null === (filter_input(INPUT_COOKIE, "nome"))))){
+                    echo '<td style="width: 33%"><a href="registo.php"><div id="titulo"><script>getLangText("registar");</script></div></a></td>';
+                }else{
+                    echo '<td style="width: 33%"><a href="conta.php"><div id="titulo"><script>getLangText("conta");</script></div></a></td>';   
+                }
+                ?>
+                
+                <td style="width: 33%"><a href="inscricoes.php"><div id="titulo"><script>getLangText("inscricoes");</script></div></a></td>
             </tr>
         </table>
     </body>
