@@ -1,3 +1,29 @@
+<?php
+
+$id = filter_input(INPUT_GET, "id");
+
+$ligacao = mysql_connect("localhost", "root", "");
+if (!$ligacao) {
+    die("nao foi possivel ligar:" . mysql_error());
+}
+$int = 0;
+$sql = "select nome_equipa,instituto,observacoes from inscricoes where id_inscricao='$id'";
+$membros=array("", "", "");
+mysql_select_db("robo_bombeiro");
+ $result = mysql_query($sql, $ligacao);
+    while ($row = mysql_fetch_assoc($result)) {
+        $nome=$row['nome_equipa'];
+        $instituto=$row['instituto'];
+        $obs=$row['observacoes'];
+    }
+  $sql2 = "Select l.username from login l join login_inscricoes i on l.id_login = i.id_login where id_inscricao = $id;";
+
+ $result2 = mysql_query($sql2, $ligacao);
+    while ($row2 = mysql_fetch_assoc($result2)) {
+        $membros[$int]=$row2['username'];
+        $int++;
+    }  
+?>
 <html>
     <head>
         
@@ -64,10 +90,10 @@
             
         </style>
         <script>
-            function Participante(id,div){
+            function Participante(id,div2){
                 var text = document.getElementById(id).value;
                 
-                var div = document.getElementById(div);
+                var div = document.getElementById(div2);
                 if(text.length === 0){  
                 if (div.getAttribute("hidden") === null) {
                     div.setAttribute("hidden","");  
@@ -81,17 +107,15 @@
     </head>
     <body>
         <?php include("./masterPage.php") ?>
-         <?php
-        if ((null !== (filter_input(INPUT_COOKIE, "id_login")) && (null !== (filter_input(INPUT_COOKIE, "nome"))&&(null === (filter_input(INPUT_COOKIE, "id_inscricao")))))) {
-            ?>
-        <form action="form_inscricao.php" type ="submit" method="POST" name="insc">
+        
+        <form action="form_alterar.php?id=<?php echo $id;?>" method="POST" name="insc">
         <table align="center" >
             <tr>
                 <th>
                    <script>getLangText("nomeEquipa");</script>
                 </th>
                 <td>
-                    <input type="text" width ="30px" name="nomeEquipa"/>
+                    <input type="text" width ="30px" name="nomeEquipa" value="<?php echo $nome;?>"/>
                 </td>
             </tr>
             <tr>
@@ -99,12 +123,19 @@
                    <script>getLangText("membros");</script>
                 </th>
                 <td>
-                    <input type="text" id="pt1" width ="30px" name="participante2" oninput="Participante('pt1','div_pesq');pesqNomes(this.value,'pt1','div_pesq')" name="text1"/> 
+                    <input type="text" id="pt1" width ="30px" name="participante1" oninput="Participante('pt1','div_pesq');pesqNomes(this.value,'pt1','div_pesq')" 
+                           value="<?php echo $membros[0];?>"/> 
                     <br/><div hidden id="div_pesq" class='div_pesq' >  
                     </div>
                     <br/>
-                    <input type="text" id="pt2"  width ="30px" name="participante3"   oninput="Participante('pt2','div_pesq2');pesqNomes(this.value,'pt2','div_pesq2')"/>
-                    <br/><div hidden id="div_pesq2" class='div_pesq' ></div>
+                    <input type="text" id="pt2"  width ="30px" name="participante2"   oninput="Participante('pt2','div_pesq2');pesqNomes(this.value,'pt2','div_pesq2')"
+                           value="<?php echo $membros[1];?>" />
+                    <br/><div hidden id="div_pesq2" class='div_pesq' >
+                    </div>
+                    <br/>
+                    <input type="text" id="pt3"  width ="30px" name="participante3"   oninput="Participante('pt3','div_pesq3');pesqNomes(this.value,'pt3','div_pesq3')"
+                           value="<?php echo $membros[2];?>" />
+                    <br/><div hidden id="div_pesq3" class='div_pesq' ></div>
                 </td>
             </tr>
             <tr>
@@ -112,7 +143,7 @@
                    <script>getLangText("instituto");</script>
                 </th>
                 <td>
-                    <input type="text" width ="30px" name="instituto"/>
+                    <input type="text" width ="30px" name="instituto" value="<?php echo $instituto;?>"/>
                 </td>
             </tr>
             <tr>
@@ -120,7 +151,7 @@
                    Obs:
                 </th>
                 <td>
-                    <textarea rows="4" cols="50" maxlength="250" name="obs"></textarea>
+                    <textarea rows="4" cols="50" maxlength="250" name="obs"><?php echo $obs;?></textarea>
                 </td>
             </tr>
             <tr>
@@ -128,26 +159,11 @@
                   
                 </th>
                 <td>
-                    <input type="submit" value="Inscrever equipa"/>
+                    <input type="submit" value="Alterar equipa"/>
                 </td>
             </tr>
         </table>
         </form>
-        <?php
-        }else if(((null !== (filter_input(INPUT_COOKIE, "id_login")) && (null !== (filter_input(INPUT_COOKIE, "nome"))&&(null !== (filter_input(INPUT_COOKIE, "id_inscricao"))))))){
-            echo '<div align="center">Já se encontra inscrito</div>';
-        } else {
-           
-            echo '<div align="center">
-                Por favor efectue login para se inscrever.
-                <form action="form_login.php" type ="submit" method="POST" nome="formlogin" >
-                    <p>Username:<input type="text" width="20px" name="username"/></p>
-                    <p>Password:<input type="password" width="20px" name="password"/></p>
-                    <p><input type="submit" value="Login"/></p>
-                </form>
-                </div>';
-        }
-        ?>
+       
     </body>
 </html>
-

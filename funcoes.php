@@ -14,10 +14,8 @@ return xhttp.responseXML;
 } 
 function getLangText(tagNam) {
         y="./pt/strings.xml";
-        var x = document.cookie.split(";");
-            
+        var x = document.cookie.split(";"); 
         for (i = 0; i < x.length; i++) {
-            alert(x[i].indexOf("lan="));
             if (x[i].indexOf("lan=")>=0) {
                 y = x[i].substring(x[i].indexOf("=") + 1);
                 break;   

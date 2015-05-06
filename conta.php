@@ -1,6 +1,8 @@
 <html>
     <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
         <style>
+           
             th{
                 text-align: left;
                 padding-bottom: 5px;
@@ -13,7 +15,7 @@
     </head>
     <body>
      <?php include("./masterPage.php") ?>  
-        <table align="center" style="font-size: 22px;">
+        <table align="left" style="font-size: 22px;">
             <tr>
                 <th>
                      Nome:
@@ -35,7 +37,13 @@
                      Estado:  
                 </th>
                 <td>
-                     <?php echo filter_input(INPUT_COOKIE, "estado");?>
+                      <?php if(filter_input(INPUT_COOKIE, "estado")==0){
+                         echo "Não está inscrito.";
+                     }else{
+                         echo "Inscrito.";
+                     }
+                        
+                       ?>
                 </td>
             </tr>
             <tr>
@@ -46,14 +54,7 @@
                      <?php echo filter_input(INPUT_COOKIE, "instituto");?>
                 </td>
             </tr>
-            <tr>
-                <th>
-                     Pago:  
-                </th>
-                <td>
-                     <?php echo filter_input(INPUT_COOKIE, "pago");?>
-                </td>
-            </tr>
+           
         </table>
      
     </body>   

@@ -13,12 +13,11 @@
 
         $login_user = "Insert into login (Username,Password,PerguntaSeguranca,RespostaSeguranca,Nome) VALUES "
                 . "('$username','$password','$perguntaS','$respostaS','$nomeR')";
-        echo $login_user;
         mysql_select_db("robo_bombeiro");
         try {
             mysql_query($login_user);
             echo "Registado com sucesso";
-            header("Refresh:5; url=./index.php"); // Redirect browser 
+            header("Refresh:2; url=./index.php"); // Redirect browser 
         } catch (PDOException $e) {
             die($e);
         }

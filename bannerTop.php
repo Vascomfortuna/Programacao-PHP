@@ -59,6 +59,8 @@
                         document.cookie = "instituto=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
                         document.cookie = "pago=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
                         document.cookie = "obs=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                        document.cookie = "id_inscricao=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                        document.cookie = "admin=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
                         location.reload();
                 }
             
@@ -88,9 +90,13 @@
             echo '<div id="loginMenu"> <table><tr><th>';
             echo 'Bem vindo, ' . filter_input(INPUT_COOKIE, "nome") . '</th></tr>';
             echo '<tr><td><input id="btLogout" type="button" value="Logout" onclick="Logout()"></td></tr>';
+            if (filter_input(INPUT_COOKIE, "admin")=="1"){
+                echo '<tr><td><form action="gcontas.php"><input type="submit" value="Gestão de contas" /></form></td></tr>';
+            }
             echo '</table></div>';
         }
         ?>
+        
         <div id="nomeTitulo"> <script>getLangText("nome");</script></div>
     </body>
 </html>

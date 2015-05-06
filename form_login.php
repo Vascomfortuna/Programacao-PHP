@@ -8,11 +8,12 @@ if (!$ligacao) {
     die("nao foi possivel ligar:" . mysql_error());
 }
 
-$login_user = "Select login.Id_Login,login.Nome,login.Estado,inscricoes.Nome_Equipa,inscricoes.Instituto,inscricoes.Observacoes, inscricoes.Pago 
+$login_user = "Select login.Id_Login,login.Nome,login.Estado,inscricoes.Nome_Equipa,inscricoes.Instituto,inscricoes.Observacoes, 
+                inscricoes.id_inscricao,login.admin
                 from login
-                inner join login_inscricoes
+                left join login_inscricoes
                 on login.id_login=login_inscricoes.id_login 
-                inner join inscricoes
+                left join inscricoes
                 on inscricoes.id_inscricao = login_inscricoes.id_inscricao
                 where login.Username='$username'and login.Password='$password'";
 
@@ -31,8 +32,9 @@ try {
         setcookie("estado", $row['Estado']);
         setcookie("nome_equipa", $row['Nome_Equipa']);
         setcookie("instituto", $row['Instituto']);
-        setcookie("pago", $row['Pago']);
         setcookie("obs", $row['Observacoes']);
+        setcookie("id_inscricao", $row['id_inscricao']);
+        setcookie("admin", $row['admin']);
     }
 
     if (null === (filter_input(INPUT_COOKIE, "id_login")) && (null === (filter_input(INPUT_COOKIE, "nome")))) {
